@@ -1,0 +1,1128 @@
+<!doctype html>
+<html lang="id">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+		<script src="https://unpkg.com/split-type"></script>
+
+		<style>
+			@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+			* {
+				font-family: "Poppins", sans-serif;
+			}
+		</style>
+
+		<link rel="stylesheet" href="css/style.css" />
+		<title>Prediksi SPMB Jalur TKA</title>
+	</head>
+
+	<body>
+		<section
+			id="home"
+			class="relative min-h-screen flex items-center justify-center text-center flex-col bg-cover bg-center bg-no-repeat overflow-hidden px-32 animated-grid"
+		>
+			<!-- TOP BADGE -->
+			<div
+				class="absolute top-0 left-0 w-full py-2.5 text-sm text-white text-center z-10 flex flex-col"
+			>
+				<div
+					class="bg-gradient-to-r from-[#4F39F6] to-[#6A5CFF] py-4 flex items-center justify-center"
+				>
+					<span class="px-3 rounded-md bg-white text-indigo-600 mr-2">
+						Hello!!
+					</span>
+					Cek peluang lolos SPMB Jalur TKA sekarang
+				</div>
+				<nav
+					class="z-50 flex items-center justify-between w-full py-4 px-6 md:px-16 lg:px-24 xl:px-32 backdrop-blur text-slate-800 text-sm"
+				>
+					<a
+						href="#home"
+						class="flex items-center justify-between gap-2 font-bold text-lg"
+					>
+						<img src="./assets/logo2.png" alt="Logo" class="h-8 w-auto" />
+						<p>MBTKA</p>
+					</a>
+
+					<div
+						class="hidden md:flex items-center gap-8 transition duration-500"
+					>
+						<a href="#home" class="hover:text-slate-500 transition"> Home </a>
+						<a href="#mission-section" class="hover:text-slate-500 transition">
+							Misi
+						</a>
+						<a href="#approach-section" class="hover:text-slate-500 transition">
+							Pendekatan
+						</a>
+						<a
+							href="#prediction-section"
+							class="hover:text-slate-500 transition"
+						>
+							Prediksi
+						</a>
+					</div>
+					<button id="open-menu" class="md:hidden active:scale-90 transition">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="26"
+							height="26"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							class="lucide lucide-menu-icon lucide-menu"
+						>
+							<path d="M4 5h16" />
+							<path d="M4 12h16" />
+							<path d="M4 19h16" />
+						</svg>
+					</button>
+				</nav>
+			</div>
+
+			<div
+				id="mobile-navLinks"
+				class="fixed inset-0 z-[100] bg-white/60 text-slate-800 backdrop-blur flex flex-col items-center justify-center text-lg gap-8 md:hidden transition-transform duration-300 -translate-x-full"
+			>
+				<a href="/"> Home </a>
+				<a href="/products"> Products </a>
+				<a href="/stories"> Stories </a>
+				<a href="/pricing"> Pricing </a>
+				<button
+					id="close-menu"
+					class="active:ring-3 active:ring-white aspect-square size-10 p-1 items-center justify-center bg-slate-100 hover:bg-slate-200 transition text-black rounded-md flex"
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="lucide lucide-x-icon lucide-x"
+					>
+						<path d="M18 6 6 18" />
+						<path d="m6 6 12 12" />
+					</svg>
+				</button>
+			</div>
+
+			<!-- CONTENT -->
+			<main class="flex flex-col items-center px-6 py-24 max-w-4xl">
+				<h1
+					class="text-4xl md:text-6xl font-extrabold text-slate-800 leading-tight"
+				>
+					Yuk, kita cek peluangmu<br />
+					<span class="text-indigo-600">lewat Jalur TKA</span>
+				</h1>
+
+				<p class="mt-5 text-base md:text-lg text-slate-800 max-w-xl">
+					Berdasarkan nilai, jarak, dan daya tampung sekolah tujuan
+				</p>
+			</main>
+			<!-- SCROLL BUTTON -->
+			<a
+				href="#mission-section"
+				class="absolute bottom-5 flex flex-col items-center gap-2 animate-bounce"
+			>
+				<span class="text-sm text-slate-700">Scroll</span>
+
+				<div
+					class="w-6 h-10 border-2 border-slate-700 rounded-full flex justify-center"
+				>
+					<span
+						class="w-1.5 h-1.5 bg-slate-700 rounded-full mt-2 animate-scroll"
+					></span>
+				</div>
+			</a>
+		</section>
+
+		<section
+			id="mission-section"
+			class="min-h-screen flex items-center px-16 lg:px-32"
+		>
+			<!-- wrapper -->
+			<div class="flex w-full items-center gap-12 justify-center">
+				<!-- kiri: title -->
+				<div class="w-1/4 lg:w-1/3">
+					<h2
+						class="text-slate-800 text-5xl lg:text-7xl font-bold tracking-tight leading-tight"
+					>
+						<span class="block split-text">Misi</span>
+						<span class="block split-text translate-x-10 lg:translate-x-20"
+							>Kami</span
+						>
+					</h2>
+				</div>
+
+				<!-- kanan: teks -->
+				<div class="w-3/4 lg:w-4/5">
+					<p
+						id="mission-text"
+						class="text-xl lg:text-4xl font-extrabold leading-tight text-gray-400"
+					>
+						Sistem ini dirancang sebagai fondasi pengembangan mekanisme prediksi
+						dalam proses
+						<span class="important">Sistem Penerimaan Murid Baru (SPMB)</span>,
+						dengan tujuan menghadirkan proses seleksi yang lebih
+						<span class="important">transparan dan adil</span>
+						bagi seluruh pihak yang terlibat.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section id="zoom-section" class="relative min-h-screen overflow-hidden">
+			<div id="zoom-container" class="relative h-screen w-full">
+				<!-- heading -->
+				<h2
+					class="zoom-heading absolute inset-0 flex flex-col items-center justify-center text-4xl lg:text-6xl font-extrabold text-slate-800 opacity-20 text-center px-32 gap-8"
+				>
+					<span>Prediksi peluangmu di</span>
+					<span class="text-indigo-600">21 SMA Sumsel!!</span>
+				</h2>
+
+				<div
+					class="zoom-cta absolute inset-x-0 top-[55%] flex justify-center opacity-0"
+				>
+					<a
+						class="inline-flex items-center justify-center mt-20 px-6 py-3 rounded-xl bg-gradient-to-r from-[#4F39F6] to-[#6A5CFF] text-white font-semibold hover:scale-105 transition"
+						href="https://sumsel.spmb.id/030201/sekilas"
+						>Detail Jalur TKA di 21 SMA Sumsel</a
+					>
+				</div>
+
+				<!-- zoom items -->
+				<div class="zoom-item item-1" data-layer="3">
+					<img src="assets/img20230621171208.jpg" />
+				</div>
+				<div class="zoom-item item-2" data-layer="2">
+					<img src="assets/IMG-20250412-WA0026.jpg" />
+				</div>
+				<div class="zoom-item item-3" data-layer="1">
+					<img src="assets/IMG20230314112220-scaled.jpg" />
+				</div>
+
+				<div class="zoom-item item-4" data-layer="2">
+					<img src="assets/IMG-20240619-WA0015-1.jpg" />
+				</div>
+				<div class="zoom-item item-5" data-layer="3">
+					<img src="assets/sma11.jpg" />
+				</div>
+				<div class="zoom-item item-6" data-layer="1">
+					<img src="assets/sma_negeri_1_palembang_smansa_cover.jpg" />
+				</div>
+
+				<div class="zoom-item item-7" data-layer="2">
+					<img src="assets/sma_negeri_6_palembang_cover.jpg" />
+				</div>
+			</div>
+		</section>
+
+		<section id="approach-section" class="bg-white pb-6">
+			<div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+				<div class="container mx-auto px-6 p-6 bg-white">
+					<!-- HEADER -->
+					<div class="mb-16 text-center">
+						<h4
+							class="text-base text-indigo-600 font-semibold tracking-wide uppercase"
+						>
+							Pendekatan
+						</h4>
+						<p
+							class="split-text mt-2 text-5xl lg:text-7xl font-bold tracking-tight text-slate-800 leading-25"
+						>
+							Prediksi yang dibuat dengan logika,<br class="block lg:hidden" />
+							bukan asumsi
+						</p>
+					</div>
+
+					<!-- GRID -->
+					<div class="approach-card flex flex-wrap my-12">
+						<!-- CARD 1 -->
+						<div
+							class="w-full border-b md:w-1/2 md:border-r lg:w-1/3 p-8 border-black/10"
+						>
+							<div class="flex items-center mb-6">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 32 32"
+									fill="currentColor"
+									class="h-6 w-6 text-indigo-500"
+								>
+									<path
+										d="M16 3C8.8 3 3 8.8 3 16s5.8 13 13 13 13-5.8 13-13c0-1.398-.188-2.793-.688-4.094L26.688 13.5c.2.8.313 1.602.313 2.5 0 6.102-4.898 11-11 11S5 22.102 5 16 9.898 5 16 5c3 0 5.695 1.195 7.594 3.094L25 6.688C22.7 4.386 19.5 3 16 3z"
+									/>
+								</svg>
+								<div class="ml-4 text-xl font-medium">
+									Berdasarkan data seleksi nyata
+								</div>
+							</div>
+							<p class="leading-loose text-gray-500">
+								Prediksi disusun dari nilai minimal, rasio pendaftar, dan daya
+								tampung tahun sebelumnya — bukan tebakan acak.
+							</p>
+						</div>
+
+						<!-- CARD 2 -->
+						<div
+							class="w-full border-b md:w-1/2 lg:w-1/3 lg:border-r p-8 border-black/10"
+						>
+							<div class="flex items-center mb-6">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 32 32"
+									fill="currentColor"
+									class="h-6 w-6 text-indigo-500"
+								>
+									<path
+										d="M16 3C8.8 3 3 8.8 3 16s5.8 13 13 13 13-5.8 13-13S23.2 3 16 3z"
+									/>
+								</svg>
+								<div class="ml-4 text-xl font-medium">
+									Setiap SMA dianalisis terpisah
+								</div>
+							</div>
+							<p class="leading-loose text-gray-500">
+								Setiap sekolah memiliki tingkat persaingan dan karakter seleksi
+								yang berbeda, sehingga tidak bisa disamaratakan.
+							</p>
+						</div>
+
+						<!-- CARD 3 -->
+						<div
+							class="w-full border-b md:w-1/2 md:border-r lg:w-1/3 lg:border-r-0 p-8 border-black/10"
+						>
+							<div class="flex items-center mb-6">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 32 32"
+									fill="currentColor"
+									class="h-6 w-6 text-indigo-500"
+								>
+									<path d="M16 4l12 12-12 12L4 16 16 4z" />
+								</svg>
+								<div class="ml-4 text-xl font-medium">
+									Fokus pada peluang, bukan janji
+								</div>
+							</div>
+							<p class="leading-loose text-gray-500">
+								Sistem ini membantu memahami posisi kamu dalam persaingan, bukan
+								memastikan kelulusan.
+							</p>
+						</div>
+
+						<!-- CARD 4 -->
+						<div
+							class="w-full border-b md:w-1/2 lg:w-1/3 lg:border-r lg:border-b-0 p-8 border-black/10"
+						>
+							<div class="flex items-center mb-6">
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 32 32"
+									fill="currentColor"
+									class="h-6 w-6 text-indigo-500"
+								>
+									<path d="M6 6h20v20H6z" />
+								</svg>
+								<div class="ml-4 text-xl font-medium">
+									Dibandingkan dengan batas terbawah yang lolos
+								</div>
+							</div>
+							<p class="leading-loose text-gray-500">
+								Peluang dihitung dengan membandingkan nilai kamu terhadap nilai
+								peserta pada peringkat terbawah yang lolos TKA pada tahun
+								sebelumnya di sekolah yang sama.
+							</p>
+						</div>
+
+						<!-- CARD 5 -->
+						<div
+							class="w-full border-b md:w-1/2 md:border-r md:border-b-0 lg:w-1/3 lg:border-b-0 p-8 border-black/10"
+						>
+							<div class="flex items-center mb-6">
+								<svg
+									viewBox="0 0 32 16"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									class="h-4 w-8 text-indigo-500"
+								>
+									<rect x="1" y="1" width="30" height="14" rx="7" ry="7" />
+								</svg>
+								<div class="ml-4 text-xl font-medium">
+									Bahasa yang mudah dipahami
+								</div>
+							</div>
+							<p class="leading-loose text-gray-500">
+								Informasi disajikan secara visual dan sederhana agar bisa
+								dipahami siswa dan orang tua tanpa istilah teknis.
+							</p>
+						</div>
+
+						<!-- CARD 6 -->
+						<div class="w-full md:w-1/2 lg:w-1/3 p-8 border-black/10">
+							<div class="flex items-center mb-6">
+								<svg
+									viewBox="0 0 32 28"
+									fill="currentColor"
+									class="h-6 w-6 text-indigo-500"
+								>
+									<path d="M16 2L30 26H2L16 2Z" />
+								</svg>
+								<div class="ml-4 text-xl font-medium">
+									Membantu keputusan yang lebih rasional
+								</div>
+							</div>
+							<p class="leading-loose text-gray-500">
+								Prediksi ini dapat digunakan sebagai bahan pertimbangan sebelum
+								menentukan strategi pilihan sekolah.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="prediction-section" class="bg-slate-50 py-20 overflow-hidden">
+			<div class="max-w-7xl mx-auto px-6 flex flex-col gap-12">
+				<!-- HEADER -->
+				<div class="mb-16 text-center">
+					<h4
+						class="text-base text-indigo-600 font-semibold tracking-wide uppercase"
+					>
+						Prediksi
+					</h4>
+					<p
+						class="split-text mt-2 text-5xl lg:text-7xl font-bold tracking-tight text-slate-800 leading-25"
+					>
+						Mulailah mencoba <br />memprediksi
+						<span data-highlight>peluangmu!</span>
+					</p>
+				</div>
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-10 section-predict">
+					<!-- LEFT : HERO CARD -->
+					<div class="flex flex-col gap-6 min-h-[520px] predict-left">
+						<!-- BOX 1 : MAIN HERO CARD -->
+						<div
+							class="relative flex-1 rounded-3xl bg-gradient-to-br from-indigo-500 to-sky-400 p-10 flex flex-col justify-between shadow-lg"
+						>
+							<div class="relative z-10 max-w-md">
+								<h2 class="text-4xl font-bold text-white leading-tight">
+									Prediksi peluang TKA <br />
+									berbasis data seleksi nyata
+								</h2>
+								<p class="mt-4 text-white/90 text-lg">
+									Hitung posisi kamu dalam persaingan masuk SMA Negeri hanya
+									dalam hitungan detik — tanpa asumsi.
+								</p>
+							</div>
+						</div>
+
+						<!-- BOX 2 : SMALL INFO CARD -->
+						<div
+							class="relative flex flex-col justify-end rounded-2xl min-h-[220px] p-8 shadow-lg border border-slate-200 overflow-hidden"
+						>
+							<!-- BACKGROUND IMAGE -->
+							<div class="absolute inset-0 z-0">
+								<img
+									src="assets/5317eeb5-fa21-4a4f-9f0d-a251436f1bd0.png"
+									alt=""
+									class="w-full h-full object-cover opacity-40"
+								/>
+							</div>
+
+							<!-- BOTTOM GRADIENT -->
+							<div
+								class="absolute inset-0 z-10 bg-gradient-to-t from-indigo-500 to-sky-400 to-transparent"
+							></div>
+
+							<!-- CONTENT -->
+							<div class="relative z-20">
+								<p class="text-sm font-semibold text-white">
+									Data tahun sebelumnya
+								</p>
+								<p class="mt-3 text-base leading-relaxed text-white">
+									Prediksi dibandingkan dengan nilai peserta
+									<span class="font-medium">
+										peringkat terbawah yang lolos TKA
+									</span>
+									di sekolah tujuan.
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<!-- RIGHT : FORM CARD -->
+					<div class="bg-white rounded-3xl p-10 shadow-lg predict-right">
+						<!-- INPUTS -->
+						<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+							<div>
+								<label id="label_rapor" class="text-sm text-gray-500">
+									Nilai Rata-rata Raport
+									<span class="required-star text-red-500">*</span>
+								</label>
+								<input
+									id="rapor_avg"
+									type="number"
+									min="0"
+									max="100"
+									step="0.01"
+									required
+									placeholder="Contoh: 78.50"
+									oninput="this.value = this.value.replace(/-/g, '')"
+									class="input-field mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+								/>
+							</div>
+							<div>
+								<label id="label_nilai" class="text-sm text-gray-500">
+									Nilai Tes TKA
+									<span class="required-star text-red-500">*</span>
+								</label>
+								<input
+									id="nilai_tes_tka"
+									type="number"
+									min="0"
+									max="100"
+									step="0.01"
+									required
+									placeholder="Contoh: 78.50"
+									oninput="this.value = this.value.replace(/-/g, '')"
+									class="input-field mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+								/>
+							</div>
+							<div>
+								<label class="text-sm text-gray-500">Pilihan SMA</label>
+								<select
+									id="sekolah_tujuan"
+									class="mt-2 w-full rounded-xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+								>
+									<option value="SMA Negeri 1 Palembang">
+										SMA Negeri 1 Palembang
+									</option>
+									<option value="SMA Negeri 2 Palembang">
+										SMA Negeri 2 Palembang
+									</option>
+									<option value="SMA Negeri 3 Palembang">
+										SMA Negeri 3 Palembang
+									</option>
+									<option value="SMA Negeri 4 Palembang">
+										SMA Negeri 4 Palembang
+									</option>
+									<option value="SMA Negeri 5 Palembang">
+										SMA Negeri 5 Palembang
+									</option>
+									<option value="SMA Negeri 6 Palembang">
+										SMA Negeri 6 Palembang
+									</option>
+									<option value="SMA Negeri 7 Palembang">
+										SMA Negeri 7 Palembang
+									</option>
+									<option value="SMA Negeri 8 Palembang">
+										SMA Negeri 8 Palembang
+									</option>
+									<option value="SMA Negeri 9 Palembang">
+										SMA Negeri 9 Palembang
+									</option>
+									<option value="SMA Negeri 10 Palembang">
+										SMA Negeri 10 Palembang
+									</option>
+									<option value="SMA Negeri 11 Palembang">
+										SMA Negeri 11 Palembang
+									</option>
+									<option value="SMA Negeri 12 Palembang">
+										SMA Negeri 12 Palembang
+									</option>
+									<option value="SMA Negeri 13 Palembang">
+										SMA Negeri 13 Palembang
+									</option>
+									<option value="SMA Negeri 14 Palembang">
+										SMA Negeri 14 Palembang
+									</option>
+									<option value="SMA Negeri 15 Palembang">
+										SMA Negeri 15 Palembang
+									</option>
+									<option value="SMA Negeri 16 Palembang">
+										SMA Negeri 16 Palembang
+									</option>
+									<option value="SMA Negeri 18 Palembang">
+										SMA Negeri 18 Palembang
+									</option>
+									<option value="SMA Negeri 19 Palembang">
+										SMA Negeri 19 Palembang
+									</option>
+									<option value="SMA Negeri 20 Palembang">
+										SMA Negeri 20 Palembang
+									</option>
+									<option value="SMA Negeri 21 Palembang">
+										SMA Negeri 21 Palembang
+									</option>
+									<option value="SMA Negeri 22 Palembang">
+										SMA Negeri 22 Palembang
+									</option>
+								</select>
+							</div>
+
+							<div>
+								<label id="label_jarak" class="text-sm text-gray-500">
+									Jarak Rumah
+									<span class="required-star text-red-500">*</span>
+								</label>
+
+								<div class="relative mt-2">
+									<input
+										id="jarak_rumah_km"
+										type="text"
+										inputmode="decimal"
+										placeholder="Contoh: 3.5 atau 3,5"
+										oninput="
+											this.value = this.value
+												.replace(/[^0-9.,]/g, '')
+												.replace(/([.,].*)[.,]/g, '$1')
+										"
+										class="input-field w-full rounded-xl border border-gray-200 px-4 pr-14 py-3"
+									/>
+
+									<span
+										class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-sm text-gray-400"
+									>
+										KM
+									</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- SLIDER 1 -->
+						<div class="mt-8">
+							<div class="flex justify-between text-sm text-gray-500 mb-2">
+								<span>Daya Tampung Sekolah</span>
+								<span id="daya_label" class="text-yellow-600 font-medium">
+								</span>
+							</div>
+							<input
+								id="daya_tampung"
+								type="range"
+								min="50"
+								max="200"
+								value="120"
+								class="relative z-20 w-full accent-indigo-500 pointer-events-auto"
+							/>
+							<div class="flex justify-between text-xs text-gray-400 mt-2">
+								<span>Min</span>
+								<span>Maks</span>
+							</div>
+						</div>
+
+						<!-- RESULT BOX -->
+						<div class="mt-10 bg-slate-50 rounded-2xl p-8 text-center">
+							<p class="text-sm text-gray-500">Estimasi Peluang Kamu</p>
+							<p id="resultValue" class="mt-2 text-4xl font-bold text-gray-900">
+								0<span class="text-xl">%</span>
+							</p>
+
+							<div class="mt-6 flex justify-center gap-4">
+								<button
+									id="predictBtn"
+									class="px-8 py-3 rounded-xl bg-black text-white font-medium hover:scale-105 transition"
+								>
+									Prediksi
+								</button>
+								<button
+									id="resetBtn"
+									class="px-6 py-3 rounded-xl border border-gray-200 text-gray-600 hover:bg-gray-100 transition"
+								>
+									Reset
+								</button>
+							</div>
+						</div>
+
+						<!-- DISCLAIMER -->
+						<p class="mt-6 text-xs text-gray-400 leading-relaxed text-center">
+							* Prediksi dibuat berdasarkan data tahun sebelumnya dan tidak
+							menjamin kelulusan. Digunakan sebagai bahan pertimbangan.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section
+			id="motivation-section"
+			class="scroll-trigger relative h-screen overflow-hidden bg-white flex items-center justify-center"
+		>
+			<h2
+				class="motivation-heading text-4xl lg:text-6xl font-extrabold text-slate-800 text-center px-10 lg:px-28 leading-snug"
+			>
+				Seberapa pun tinggi peluangmu<img
+					src="assets/numerology-concept-still-life.jpg"
+					class="inline-block w-24 h-14 lg:w-40 lg:h-20 object-cover rounded-lg mx-3 align-middle shadow-sm"
+				/>
+				, tetaplah membangun
+				<img
+					src="assets/business-growth-progress-chart-with-businessman.jpg"
+					class="inline-block w-24 h-14 lg:w-40 lg:h-20 object-cover rounded-lg mx-3 align-middle shadow-sm"
+				/>
+				usaha, disiplin, dan persiapan<br />yang matang<img
+					src="assets/boy-studying-university-library.jpg"
+					class="inline-block w-24 h-14 lg:w-40 lg:h-20 object-cover rounded-lg mx-3 align-middle shadow-sm"
+				/>
+			</h2>
+		</section>
+
+		<footer
+			class="footer relative w-full bg-[#0F172A] text-white overflow-hidden h-[60vh]"
+		>
+			<!-- FOOTER INNER (INI YANG DI-ANIMATE) -->
+			<div class="footer-inner absolute inset-0 pt-16 pb-4">
+				<!-- Dotted Background -->
+				<div
+					class="absolute inset-0 z-0 pointer-events-none"
+					style="
+						background-image: radial-gradient(
+							circle,
+							rgba(255, 255, 255, 0.1) 1px,
+							transparent 1px
+						);
+						background-size: 20px 20px;
+					"
+				></div>
+
+				<!-- Gradient Overlay -->
+				<div class="absolute inset-0 z-10 pointer-events-none">
+					<div
+						class="absolute top-0 left-0 h-full w-1/3 bg-gradient-to-r from-[#0F172A] to-transparent"
+					></div>
+					<div
+						class="absolute top-0 right-0 h-full w-1/3 bg-gradient-to-l from-[#0F172A] to-transparent"
+					></div>
+					<div
+						class="absolute top-0 left-0 w-full h-52 bg-gradient-to-b from-[#0F172A] to-transparent"
+					></div>
+					<div
+						class="absolute bottom-0 left-0 w-full h-52 bg-gradient-to-t from-[#0F172A] to-transparent"
+					></div>
+				</div>
+
+				<!-- Content -->
+				<div
+					class="relative z-20 max-w-6xl mx-auto px-8 lg:px-20 text-center footer-content"
+				>
+					<!-- Heading -->
+					<h2
+						class="footer-title mb-15 mt-5 font-extrabold text-[45px] md:text-[20px] lg:text-[40px] xl:text-[80px] leading-tight"
+					>
+						Thanks for Visiting!
+					</h2>
+
+					<!-- Contact -->
+					<div
+						class="flex flex-col md:flex-row justify-between items-center mb-10 text-gray-400 text-sm"
+					>
+						<p>jimmymaulana01@gmail.com</p>
+						<p>+62 812 7346 5572</p>
+					</div>
+
+					<!-- Bottom -->
+					<div
+						class="flex flex-col md:flex-row justify-between border-t border-gray-700 pt-6 text-left gap-10"
+					>
+						<div class="flex flex-col md:flex-row gap-10">
+							<div>
+								<h4 class="mb-2">Version</h4>
+								<p class="text-gray-400">2026 © Edition</p>
+							</div>
+							<div>
+								<h4 class="mb-2">Author</h4>
+								<p class="text-gray-400">Jimmy Maulana</p>
+							</div>
+						</div>
+
+						<div class="text-right">
+							<h4 class="mb-4">Social Media</h4>
+							<div class="flex flex-col md:flex-row gap-6 text-gray-400">
+								<a href="https://www.instagram.com/jimmymaulana01" class="cursor-pointer hover:text-white">Instagram</a>
+								<a href="https://github.com/jimmymaulana01" class="cursor-pointer hover:text-white">Github</a>
+								<a href="https://www.linkedin.com/in/jimmy-maulana-728542253/" class="cursor-pointer hover:text-white">LinkedIn</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<!-- SCRIPTS -->
+		<script>
+			document
+				.getElementById("predictBtn")
+				.addEventListener("click", function (e) {
+					let isValid = true;
+
+					document
+						.querySelectorAll("[data-required='true']")
+						.forEach((input) => {
+							const label = document.getElementById(
+								"label_" + input.id.split("_")[0],
+							);
+
+							const isEmpty = !input.value.trim();
+							const isOutOfRange =
+								input.validity.rangeOverflow || input.validity.rangeUnderflow;
+
+							if (isEmpty || isOutOfRange) {
+								isValid = false;
+
+								input.classList.add("border-red-500", "ring-2", "ring-red-200");
+								label.classList.add("text-red-500");
+							} else {
+								input.classList.remove(
+									"border-red-500",
+									"ring-2",
+									"ring-red-200",
+								);
+								label.classList.remove("text-red-500");
+							}
+						});
+
+					if (!isValid) {
+						e.preventDefault();
+					}
+				});
+
+			document.querySelectorAll(".input-field").forEach((input) => {
+				// ambil bagian belakang id
+				const key = input.id.split("_")[0];
+				const label = document.getElementById("label_" + key);
+				const star = label ? label.querySelector(".required-star") : null;
+
+				input.addEventListener("input", function () {
+					if (!star) return;
+
+					if (this.value.trim() !== "") {
+						star.classList.add("hidden");
+					} else {
+						star.classList.remove("hidden");
+					}
+				});
+			});
+		</script>
+
+		<script src="javascript/scripts.js">
+		</script>
+
+		<script>
+			gsap.registerPlugin(ScrollTrigger);
+
+			const text = document.getElementById("mission-text");
+
+			// pecah per kata TANPA ngerusak span penting
+			const nodes = [...text.childNodes];
+			text.innerHTML = "";
+
+			nodes.forEach((node) => {
+				if (node.nodeType === Node.TEXT_NODE) {
+					node.textContent.split(" ").forEach((word) => {
+						if (word.trim()) {
+							const span = document.createElement("span");
+							span.className = "word inline-block mr-2";
+							span.textContent = word;
+							text.appendChild(span);
+						}
+					});
+				} else if (node.nodeType === Node.ELEMENT_NODE) {
+					const wrapper = document.createElement("span");
+					wrapper.className = "important-word inline-block mr-2";
+					wrapper.textContent = node.textContent;
+					text.appendChild(wrapper);
+				}
+			});
+
+			// kata biasa → hitam
+			gsap.to(".word", {
+				color: "#111827",
+				scrollTrigger: {
+					trigger: "#mission-section",
+					start: "top center",
+					end: "bottom center",
+					scrub: 0.6,
+				},
+				stagger: 0.02,
+				ease: "none",
+			});
+
+			gsap.to(".important-word", {
+				color: "#4f46e5",
+				scrollTrigger: {
+					trigger: "#mission-section",
+					start: "top center",
+					end: "bottom center",
+					scrub: 0.6,
+				},
+				stagger: 0.06,
+				ease: "none",
+			});
+		</script>
+
+		<script>
+			gsap.registerPlugin(ScrollTrigger);
+
+			gsap.set(".zoom-heading", {
+				z: -200,
+				scale: 0.6,
+				opacity: 0.3,
+			});
+
+			gsap.set(".zoom-cta", {
+				opacity: 0,
+				y: 20,
+				z: 100,
+			});
+
+			const tl = gsap.timeline({
+				scrollTrigger: {
+					trigger: "#zoom-section",
+					start: "top top",
+					end: "+=180%",
+					scrub: 1.2, // INI bikin scroll buttery
+					pin: true,
+					// markers: true
+				},
+			});
+
+			/* =========================
+   PHASE 1 — ZOOM MASUK
+========================= */
+			tl.to(
+				".zoom-item[data-layer='3']",
+				{
+					opacity: 0.8,
+					z: 900,
+					scale: 1.4,
+					filter: "grayscale(0%)",
+					ease: "none",
+				},
+				0,
+			);
+
+			tl.to(
+				".zoom-item[data-layer='2']",
+				{
+					opacity: 0.6,
+					z: 600,
+					scale: 1.25,
+					filter: "grayscale(0%)",
+					ease: "none",
+				},
+				0,
+			);
+
+			tl.to(
+				".zoom-item[data-layer='1']",
+				{
+					opacity: 0.45,
+					z: 350,
+					scale: 1.1,
+					filter: "grayscale(0%)",
+					ease: "none",
+				},
+				0,
+			);
+
+			tl.to(
+				".zoom-heading",
+				{
+					opacity: 1,
+					z: 80,
+					scale: 1.05,
+					ease: "none",
+				},
+				0,
+			);
+
+			tl.to(
+				".zoom-cta",
+				{
+					opacity: 1,
+					y: 0,
+					ease: "power2.out",
+				},
+				0.7,
+			);
+
+			/* =========================
+   PHASE 2 — HILANG (REVERSIBLE)
+========================= */
+			tl.to(
+				".zoom-item",
+				{
+					opacity: 0,
+					scale: 0.9,
+					ease: "power2.out",
+					stagger: {
+						each: 0.02,
+					},
+				},
+				0.6,
+			);
+		</script>
+
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+				gsap.registerPlugin(ScrollTrigger);
+
+				document.querySelectorAll(".split-text").forEach((el) => {
+					SplitType.revert(el);
+
+					const split = new SplitType(el, {
+						types: "words, chars",
+					});
+
+					gsap.from(el.querySelectorAll(".char"), {
+						y: 80,
+						rotate: 15,
+						opacity: 0,
+						stagger: 0.04,
+						duration: 0.6,
+						ease: "back.out(1.4)",
+						scrollTrigger: {
+							trigger: el,
+							start: "top 85%",
+							end: "bottom 10%",
+							toggleActions: "play reverse play reverse",
+						},
+					});
+				});
+			});
+		</script>
+
+		<script>
+			gsap.registerPlugin(ScrollTrigger);
+
+			gsap.set(".predict-left, .predict-right", {
+				opacity: 1,
+				x: 0,
+				rotate: 0,
+				scale: 1,
+			});
+
+			gsap.fromTo(
+				".predict-left",
+				{
+					x: -180,
+					rotate: -8,
+					opacity: 0,
+					scale: 0.95,
+				},
+				{
+					x: 0,
+					rotate: 0,
+					opacity: 1,
+					scale: 1,
+					ease: "power3.out",
+					scrollTrigger: {
+						trigger: ".section-predict",
+						start: "top bottom",
+						end: "top 20%",
+						scrub: 1,
+						immediateRender: false,
+					},
+				},
+			);
+
+			/* === RIGHT CARD === */
+			gsap.fromTo(
+				".predict-right",
+				{
+					x: 180,
+					rotate: 8,
+					opacity: 0,
+					scale: 0.95,
+				},
+				{
+					x: 0,
+					rotate: 0,
+					opacity: 1,
+					scale: 1,
+					ease: "power3.out",
+					scrollTrigger: {
+						trigger: ".section-predict",
+						start: "top bottom",
+						end: "top 20%",
+						scrub: 1,
+						immediateRender: false,
+					},
+				},
+			);
+		</script>
+
+		<script>
+			console.log("observer running");
+
+			document.addEventListener("DOMContentLoaded", () => {
+				const section = document.getElementById("motivation-section");
+				const heading = document.querySelector(".motivation-heading");
+
+				const observer = new IntersectionObserver(
+					(entries) => {
+						entries.forEach((entry) => {
+							if (entry.isIntersecting) {
+								heading.classList.add("show");
+							} else {
+								heading.classList.remove("show");
+							}
+						});
+					},
+					{ threshold: 0.3 },
+				);
+
+				observer.observe(section);
+			});
+		</script>
+		
+		<script>
+			gsap.registerPlugin(ScrollTrigger);
+
+			// footer inner mulai ketutup
+			gsap.set(".footer-inner", {
+				yPercent: -50,
+			});
+
+			// uncover footer
+			const uncover = gsap.timeline({ paused: true });
+			uncover.to(".footer-inner", {
+				yPercent: 0,
+				ease: "none",
+			});
+
+			// trigger utama
+			ScrollTrigger.create({
+				trigger: ".scroll-trigger",
+				start: "bottom bottom",
+				end: "+=50%",
+				animation: uncover,
+				scrub: true,
+			});
+
+			// title turun
+			gsap.from(".footer-title", {
+				yPercent: -200,
+				opacity: 0,
+				ease: "none",
+				scrollTrigger: {
+					trigger: ".scroll-trigger",
+					start: "bottom bottom",
+					end: "+=70%",
+					scrub: true,
+				},
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,132 @@
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes grid-scroll {
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+.animated-grid {
+  position: relative;
+  overflow: hidden;
+
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABnSURBVHja7M5RDYAwDEXRDgmvEocnlrQS2SwUFST9uEfBGWs9c97nbGtDcquqiKhOImLs/UpuzVzWEi1atGjRokWLFi1atGjRokWLFi1atGjRokWLFi1af7Ukz8xWp8z8AAAA//8DAJ4LoEAAlL1nAAAAAElFTkSuQmCC");
+  background-repeat: repeat;
+  background-size: 50px 50px;
+
+  animation: grid-scroll 40s linear infinite;
+}
+
+.animated-grid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background:
+    /* fade atas & bawah (LEBIH TIPIS) */
+    linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.4) 0%,
+      rgba(255,255,255,0) 20%,
+      rgba(255,255,255,0) 80%,
+      rgba(255,255,255,0.4) 100%
+    ),
+
+    /* fade kiri & kanan + sudut */
+    radial-gradient(
+      circle at center,
+      rgba(255,255,255,0) 0%,
+      rgba(255,255,255,0) 45%,
+      rgba(255,255,255,0.7) 75%,
+      rgba(255,255,255,1) 100%
+    );
+}
+
+@keyframes scroll {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  40% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-scroll {
+  animation: scroll 1.5s infinite;
+}
+
+#zoom-container {
+  perspective: 100vh;
+  transform-style: preserve-3d;
+}
+
+.zoom-item {
+  position: absolute;
+  width: 160px;
+  opacity: 0.25;              /* awal redup */
+  filter: grayscale(100%);    /* abu-abu */
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+}
+
+.zoom-item img {
+  width: 100%;
+  border-radius: 0.75rem;
+}
+
+/* posisi biar nyebar rapi */
+.item-1 { left: 10%; top: 28%; }
+.item-2 { right: 12%; top: 18%; }
+.item-3 { left: 30%; bottom: 22%; }
+.item-4 { right: 32%; top: 40%; }
+.item-5 { left: 18%; bottom: 14%; }
+.item-6 { right: 18%; bottom: 20%; }
+.item-7 { left: 42%; top: 14%; }
+.item-8 { right: 44%; bottom: 12%; }
+
+
+#text [data-highlight] {
+  color: #4f46e5;
+}
+
+.motivation-heading {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* animasi teks */
+.motivation-heading.show {
+  opacity: 1 !important;
+  transform: translateY(0);
+}
+
+/* animasi khusus gambar */
+.motivation-heading img {
+  transform: scale(0.7);
+  opacity: 0;
+  transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 1s ease;
+}
+
+/* saat muncul */
+.motivation-heading.show img {
+  transform: scale(1);
+  opacity: 1;
+  transition-delay: 0.2s;
+}
+
+
+
+
