@@ -85,9 +85,15 @@ export function initFormValidationUI() {
 	// =========================
 	// STAR REALTIME
 	// =========================
+	const starMap = {
+		rapor_avg: "label_rapor",
+		nilai_tes_tka: "label_tka",
+		jarak_rumah_km: "label_jarak",
+	};
+
 	document.querySelectorAll(".input-field").forEach((input) => {
-		const key = input.id.split("_")[0];
-		const label = document.getElementById("label_" + key);
+		const labelId = starMap[input.id];
+		const label = document.getElementById(labelId);
 		const star = label?.querySelector(".required-star");
 
 		input.addEventListener("input", () => {
