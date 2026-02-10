@@ -41,6 +41,31 @@ cutoff_dict = {
 
 median_cutoff = np.median(list(cutoff_dict.values()))
 
+
+daya_tampung_dict = {
+    "SMA NEGERI 1 PALEMBANG": 65,
+    "SMA NEGERI 2 PALEMBANG": 66,
+    "SMA NEGERI 3 PALEMBANG": 87,
+    "SMA NEGERI 4 PALEMBANG": 90,
+    "SMA NEGERI 5 PALEMBANG": 84,
+    "SMA NEGERI 6 PALEMBANG": 74,
+    "SMA NEGERI 7 PALEMBANG": 87,
+    "SMA NEGERI 8 PALEMBANG": 54,
+    "SMA NEGERI 9 PALEMBANG": 68,
+    "SMA NEGERI 10 PALEMBANG": 79,
+    "SMA NEGERI 11 PALEMBANG": 70,
+    "SMA NEGERI 12 PALEMBANG": 44,
+    "SMA NEGERI 13 PALEMBANG": 137,
+    "SMA NEGERI 14 PALEMBANG": 142,
+    "SMA NEGERI 15 PALEMBANG": 124,
+    "SMA NEGERI 16 PALEMBANG": 84,
+    "SMA NEGERI 18 PALEMBANG": 84,
+    "SMA NEGERI 19 PALEMBANG": 90,
+    "SMA NEGERI 20 PALEMBANG": 43,
+    "SMA NEGERI 21 PALEMBANG": 111,
+    "SMA NEGERI 22 PALEMBANG": 167,
+}
+
 # =========================
 # HELPER
 # =========================
@@ -51,22 +76,22 @@ def normalize_sekolah(nama):
         .replace("SMA NEGERI 0", "SMA NEGERI ")
         .strip()
     )
+    
+cutoff_values = np.array(list(cutoff_dict.values()))
+
+mean_cut = cutoff_values.mean()
+std_cut  = cutoff_values.std()
+
+low_cut  = mean_cut - std_cut
+high_cut = mean_cut + std_cut
 
 def get_zona_cutoff(cutoff):
-    if cutoff >= 80:
-        return 2
-    elif cutoff >= 65:
-        return 1
+    if cutoff < low_cut:
+        return 0      # Longgar
+    elif cutoff < high_cut:
+        return 1      # Ketat
     else:
-        return 0
-
-def get_kelas_daya(daya):
-    if daya <= 80:
-        return 0
-    elif daya <= 120:
-        return 1
-    else:
-        return 2
+        return 2      # Sangat Ketat
 
 # =========================
 # ROUTES
@@ -80,24 +105,24 @@ def predict():
     try:
         data = request.get_json()
 
-        rapor  = float(data["rapor_avg"])
-        tka    = float(data["nilai_tes_tka"])
-        jarak  = float(data["jarak_rumah_km"])
-        daya   = int(data["daya_tampung"])
+        rapor = float(data["rapor_avg"])
+        tka   = float(data["nilai_tes_tka"])
+        jarak = float(data["jarak_rumah_km"])
         sekolah_raw = data["sekolah_tujuan"]
 
         sekolah = normalize_sekolah(sekolah_raw)
+
         cutoff = cutoff_dict.get(sekolah, median_cutoff)
+        daya = daya_tampung_dict[sekolah]
 
         skor = 0.4 * rapor + 0.6 * tka
         zona = get_zona_cutoff(cutoff)
-        kelas_daya = get_kelas_daya(daya)
 
         sample = pd.DataFrame([{
             "skor_seleksi": skor,
             "zona_cutoff": zona,
             "log_jarak_rumah": np.log1p(jarak),
-            "kelas_daya": kelas_daya
+            "daya_tampung": daya
         }])
 
         prob = pipe.predict_proba(sample)[0, 1]
@@ -105,18 +130,14 @@ def predict():
         return jsonify({
             "probability": round(float(prob), 4),
             "skor_seleksi": round(skor, 2),
-            "zona_cutoff": zona,
-            "kelas_daya": kelas_daya
+            "zona_cutoff": int(zona),
+            "daya_tampung": int(daya)
         })
 
     except KeyError as e:
         return jsonify({"message": f"Field hilang: {e}"}), 400
-
     except Exception as e:
         return jsonify({"message": str(e)}), 500
-
-# =========================
-# RUN
-# =========================
+    
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="127.0.0.1", port=5000, debug=True)

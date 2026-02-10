@@ -21,6 +21,24 @@
 	</head>
 
 	<body>
+		<div
+			id="formAlert"
+			class="hidden fixed top-20 left-1/2 -translate-x-1/2 z-50
+			flex items-start sm:items-center
+			p-4 text-sm
+			text-red-700
+			bg-red-100
+			border border-red-300
+			rounded-lg
+			w-[95%] max-w-xl"
+			role="alert"
+		>
+			<svg class="w-4 h-4 me-2 shrink-0 mt-0.5 sm:mt-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11h2v5m-2 0h4m-2.592-8.5h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+			<p>
+				<span class="font-medium me-1">Perhatian!</span>
+				Pastikan semua data terisi dan sesuai range.
+			</p>
+		</div>
 		<section
 			id="home"
 			class="relative min-h-screen flex items-center justify-center text-center flex-col bg-cover bg-center bg-no-repeat overflow-hidden px-32 animated-grid"
@@ -484,7 +502,7 @@
 								/>
 							</div>
 							<div>
-								<label id="label_nilai" class="text-sm text-gray-500">
+								<label id="label_tka" class="text-sm text-gray-500">
 									Nilai Tes TKA
 									<span class="required-star text-red-500">*</span>
 								</label>
@@ -601,27 +619,6 @@
 							</div>
 						</div>
 
-						<!-- SLIDER 1 -->
-						<div class="mt-8">
-							<div class="flex justify-between text-sm text-gray-500 mb-2">
-								<span>Daya Tampung Sekolah</span>
-								<span id="daya_label" class="text-yellow-600 font-medium">
-								</span>
-							</div>
-							<input
-								id="daya_tampung"
-								type="range"
-								min="50"
-								max="200"
-								value="120"
-								class="relative z-20 w-full accent-indigo-500 pointer-events-auto"
-							/>
-							<div class="flex justify-between text-xs text-gray-400 mt-2">
-								<span>Min</span>
-								<span>Maks</span>
-							</div>
-						</div>
-
 						<!-- RESULT BOX -->
 						<div class="mt-10 bg-slate-50 rounded-2xl p-8 text-center">
 							<p class="text-sm text-gray-500">Estimasi Peluang Kamu</p>
@@ -638,7 +635,7 @@
 								</button>
 								<button
 									id="resetBtn"
-									class="px-6 py-3 rounded-xl border border-gray-200 text-gray-600 hover:bg-gray-100 transition"
+									class="px-6 py-3 rounded-xl border border-gray-200 text-gray-600 hover:bg-gray-100 hover:scale-105 transition"
 								>
 									Reset
 								</button>
@@ -759,65 +756,11 @@
 			</div>
 		</footer>
 
-		<!-- SCRIPTS -->
-		<script>
-			document
-				.getElementById("predictBtn")
-				.addEventListener("click", function (e) {
-					let isValid = true;
-
-					document
-						.querySelectorAll("[data-required='true']")
-						.forEach((input) => {
-							const label = document.getElementById(
-								"label_" + input.id.split("_")[0],
-							);
-
-							const isEmpty = !input.value.trim();
-							const isOutOfRange =
-								input.validity.rangeOverflow || input.validity.rangeUnderflow;
-
-							if (isEmpty || isOutOfRange) {
-								isValid = false;
-
-								input.classList.add("border-red-500", "ring-2", "ring-red-200");
-								label.classList.add("text-red-500");
-							} else {
-								input.classList.remove(
-									"border-red-500",
-									"ring-2",
-									"ring-red-200",
-								);
-								label.classList.remove("text-red-500");
-							}
-						});
-
-					if (!isValid) {
-						e.preventDefault();
-					}
-				});
-
-			document.querySelectorAll(".input-field").forEach((input) => {
-				// ambil bagian belakang id
-				const key = input.id.split("_")[0];
-				const label = document.getElementById("label_" + key);
-				const star = label ? label.querySelector(".required-star") : null;
-
-				input.addEventListener("input", function () {
-					if (!star) return;
-
-					if (this.value.trim() !== "") {
-						star.classList.add("hidden");
-					} else {
-						star.classList.remove("hidden");
-					}
-				});
-			});
+		<!-- Javascripts -->
+		<script type="module" src="javascript/main.js">
 		</script>
 
-		<script src="javascript/scripts.js">
-		</script>
-
+		<!-- GSAP ANIMATIONS -->
 		<script>
 			gsap.registerPlugin(ScrollTrigger);
 
@@ -870,7 +813,6 @@
 				ease: "none",
 			});
 		</script>
-
 		<script>
 			gsap.registerPlugin(ScrollTrigger);
 
@@ -973,7 +915,6 @@
 				0.6,
 			);
 		</script>
-
 		<script>
 			document.addEventListener("DOMContentLoaded", () => {
 				gsap.registerPlugin(ScrollTrigger);
@@ -1002,7 +943,6 @@
 				});
 			});
 		</script>
-
 		<script>
 			gsap.registerPlugin(ScrollTrigger);
 
@@ -1062,7 +1002,6 @@
 				},
 			);
 		</script>
-
 		<script>
 			console.log("observer running");
 
@@ -1086,7 +1025,6 @@
 				observer.observe(section);
 			});
 		</script>
-		
 		<script>
 			gsap.registerPlugin(ScrollTrigger);
 
@@ -1124,5 +1062,6 @@
 				},
 			});
 		</script>
+
 	</body>
 </html>
