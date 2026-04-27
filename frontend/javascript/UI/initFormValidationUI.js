@@ -3,9 +3,6 @@ let sudahKlikPrediksi = false;
 export function initFormValidationUI() {
 	const predictBtn = document.getElementById("predictBtn");
 
-	// =========================
-	// HELPER
-	// =========================
 	function addError(input) {
 		input.classList.add("border-red-500");
 		input.classList.add("ring-2");
@@ -18,9 +15,7 @@ export function initFormValidationUI() {
 		input.classList.remove("ring-red-200");
 	}
 
-	// =========================
-	// VALIDASI KLIK (FULL)
-	// =========================
+	// VALIDASI KLIK 
 	function validateClick(input, min, max) {
 		const raw = input.value;
 		const value = parseFloat(raw.replace(",", "."));
@@ -32,9 +27,7 @@ export function initFormValidationUI() {
 		}
 	}
 
-	// =========================
 	// VALIDASI REALTIME (RANGE ONLY)
-	// =========================
 	function validateRealtime(input, min, max) {
 		const raw = input.value;
 		const value = parseFloat(raw.replace(",", "."));
@@ -54,9 +47,7 @@ export function initFormValidationUI() {
 		removeError(input);
 	}
 
-	// =========================
 	// CLICK EVENT
-	// =========================
 	predictBtn?.addEventListener("click", () => {
 		sudahKlikPrediksi = true;
 
@@ -65,9 +56,7 @@ export function initFormValidationUI() {
 		validateClick(document.getElementById("jarak_rumah_km"), 0, 50);
 	});
 
-	// =========================
 	// REALTIME EVENT
-	// =========================
 	const fields = [
 		{ id: "rapor_avg", min: 0, max: 100 },
 		{ id: "nilai_tes_tka", min: 0, max: 100 },
@@ -82,9 +71,7 @@ export function initFormValidationUI() {
 		});
 	});
 
-	// =========================
 	// STAR REALTIME
-	// =========================
 	const starMap = {
 		rapor_avg: "label_rapor",
 		nilai_tes_tka: "label_tka",

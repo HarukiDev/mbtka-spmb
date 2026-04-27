@@ -1,81 +1,62 @@
-import {
-	initFormValidationUI,
-	resetValidationUI,
-} from "./UI/initFormValidationUI.js";
-import { validateForm } from "./form/validateForm.js";
-import { getFormData } from "./form/getFormData.js";
-import {
-	startLoading,
-	stopLoading,
-	loadingInterval,
-} from "./UI/loadingPredict.js";
-import { predictKelulusan } from "./API/predictionApi.js";
-import { showFormAlert } from "./UI/uiAlert.js";
+import { UI } from "./UI.js";
+import { Form } from "./form.js";
+import { API } from "./API.js";
 
-document.addEventListener("DOMContentLoaded", () => {
-	// 🔥 Init UI validation
-	initFormValidationUI();
+class Main {
+    constructor() {
+        this.ui = new UI();
+        this.form = new Form();
+        this.api = new API();
 
-	const predictBtn = document.getElementById("predictBtn");
-	const resetBtn = document.getElementById("resetBtn");
+        this.init();
+    }
 
-	if (predictBtn) {
-		predictBtn.addEventListener("click", async () => {
-			// =========================
-			// VALIDATION (LOGIC ONLY)
-			// =========================
-			const { isValid } = validateForm();
+    init() {
+        this.ui.initFormValidationUI();
+        this.predictBtn = document.getElementById("predictBtn");
+        this.resetBtn = document.getElementById("resetBtn");
+        this.registerEvents();
+    }
 
-			if (!isValid) {
-				showFormAlert();
-				return;
-			}
+    registerEvents() {
+        this.predictBtn?.addEventListener("click", () => this.handlePredict());
+        this.resetBtn?.addEventListener("click", () => this.handleReset());
+    }
 
-			// =========================
-			// GET DATA
-			// =========================
-			const formData = getFormData();
-			startLoading();
+    async handlePredict() {
+        const { isValid } = this.form.validateForm();
 
-			try {
-				const response = await predictKelulusan(formData);
-				const result = await response.json();
+        if (!isValid) {
+            this.ui.showFormAlert();
+            return;
+        }
 
-				if (!response.ok) {
-					stopLoading("Error");
-					alert(result.message || "Terjadi kesalahan");
-					return;
-				}
+        const formData = this.form.getFormData();
+        this.ui.startLoading();
 
-				stopLoading(
-					`${(result.probability * 100).toFixed(1)}
-					<span class="text-xl">%</span>`
-				);
-			} catch (err) {
-				console.error(err);
-				stopLoading("Error");
-			}
-		});
-	}
+        try {
+            const response = await this.api.predictKelulusan(formData);
+            const result = await response.json();
 
-	// =========================
-	// RESET
-	// =========================
-	if (resetBtn) {
-		resetBtn.addEventListener("click", () => {
-			document.getElementById("rapor_avg").value = "";
-			document.getElementById("nilai_tes_tka").value = "";
-			document.getElementById("jarak_rumah_km").value = "";
-			document.getElementById("sekolah_tujuan").selectedIndex = 0;
+            if (!response.ok) {
+                this.ui.stopLoading("Error");
+                return;
+            }
 
-			if (loadingInterval) clearInterval(loadingInterval);
+            this.ui.stopLoading(
+                `${(result.probability * 100).toFixed(1)} %`
+            );
 
-			document.getElementById(
-				"resultValue"
-			).innerHTML = `0<span class="text-xl">%</span>`;
+        } catch (err) {
+            this.ui.stopLoading("Error");
+        }
+    }
 
-			// RESET VALIDATION SYSTEM
-			resetValidationUI();
-		});
-	}
-});
+    handleReset() {
+        this.form.reset();
+        this.ui.resetValidationUI();
+        this.ui.stopLoading("0%");
+    }
+}
+
+new Main();
