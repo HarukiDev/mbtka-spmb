@@ -33,3 +33,13 @@ Aplikasi ini menggabungkan **pemodelan prediktif di sisi backend** dengan **anta
 ### 🔹 Pendukung
 - Data preprocessing & analisis
 - Model prediksi berbasis machine learning *(detail model dijelaskan pada skripsi)*
+
+---
+
+## Kaggle
+
+### Dataset
+https://www.kaggle.com/datasets/jimmymaulana/dataset-domisiliaffirmasitka-spmb2025
+
+### Notebook
+https://www.kaggle.com/code/jimmymaulana/notebookafd765bebb
