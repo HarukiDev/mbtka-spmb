@@ -38,8 +38,8 @@ Aplikasi ini menggabungkan **pemodelan prediktif di sisi backend** dengan **anta
 
 ## Kaggle
 
-### Dataset
+### 📈 Dataset
 https://www.kaggle.com/datasets/jimmymaulana/dataset-domisiliaffirmasitka-spmb2025
 
-### Notebook
+### 📒 Notebook
 https://www.kaggle.com/code/jimmymaulana/notebookafd765bebb
